@@ -1,0 +1,164 @@
+.projects-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.projects-header h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.projects-header p {
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.filters .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 170px;
+}
+
+.filters .field.grow {
+  flex: 1;
+  min-width: 220px;
+}
+
+.filters label {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+
+.filters select,
+.filters input {
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.filters select:focus,
+.filters input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Cards */
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.project-meta {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.project-desc {
+  margin-top: 0.85rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.project-right {
+  display: flex;
+  align-items: flex-start;
+}
+
+.date-pill {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(15, 23, 42, 0.03);
+}
+
+/* Chips (same language as complaints) */
+.chip-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.03);
+  color: var(--muted);
+}
+
+.chip.status.open {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.25);
+  color: #9a3412;
+}
+.chip.status.progress {
+  background: rgba(37, 99, 235, 0.10);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #1e3a8a;
+}
+.chip.status.resolved {
+  background: rgba(34, 197, 94, 0.10);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #166534;
+}
+.chip.status.neutral {
+  background: rgba(100, 116, 139, 0.10);
+  border-color: rgba(100, 116, 139, 0.25);
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .project-top { flex-direction: column; }
+  .project-right { align-items: flex-start; }
+}

@@ -1,23 +1,15 @@
-import Button from "../components/common/Button";
+import { useAuth } from "../context/AuthContext";
+import CitizenDashboard from "./citizen/CitizenDashboard";
+import GovtDashboard from "./govt/GovtDashboard";
+import AuthorityDashboard from "./authority/AuthorityDashboard";
 
 export default function Home() {
-  return (
-    <section className="hero">
-      <div className="hero-content">
-        <h1>
-          Report. Track. Improve <span>Your City</span>
-        </h1>
+  const { role } = useAuth();
+  const r = (role || "").toLowerCase();
 
-        <p>
-          CityConnect helps citizens report civic issues, track resolutions,
-          and stay informed through transparent government updates.
-        </p>
+  if (r === "citizen") return <CitizenDashboard />;
+  if (r === "govt") return <GovtDashboard />;
+  if (r === "authority") return <AuthorityDashboard />;
 
-        <div className="hero-actions">
-          <button className="primary-btn">Report an Issue</button>
-          <button className="secondary-btn">View Alerts</button>
-        </div>
-      </div>
-    </section>
-  );
+  return <div style={{ padding: "2rem" }}>Unknown role</div>;
 }

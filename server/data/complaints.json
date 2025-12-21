@@ -5,7 +5,7 @@
     "description": "Open drain without barricades.",
     "department": "roads",
     "area": "Hosur",
-    "votes": 13,
+    "votes": 17,
     "status": "Open",
     "createdBy": "citizen001",
     "createdAt": "2025-12-21T10:00:00.000Z"
@@ -16,9 +16,20 @@
     "description": "Dark road stretch near CBT.",
     "department": "electricity",
     "area": "CBT",
-    "votes": 5,
+    "votes": 17,
     "status": "Open",
     "createdBy": "citizen001",
     "createdAt": "2025-12-20T19:30:00.000Z"
+  },
+  {
+    "id": "cmp003",
+    "title": "Open pothole near KIMS",
+    "description": "The pothole is open right between the road , causing accidents frequently, and it is bad for sanitation too.",
+    "department": "roads",
+    "area": "Hosur",
+    "votes": 1,
+    "status": "Open",
+    "createdBy": "citizen001",
+    "createdAt": "2025-12-21T15:42:29.138Z"
   }
 ]

@@ -1,0 +1,251 @@
+.complaints-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.complaints-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.complaints-header h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.complaints-header p {
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.complaints-header-actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.search {
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: white;
+  min-width: 220px;
+}
+
+/* Raise Complaint */
+.raise-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.raise-top {
+  padding: 1rem 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.raise-title {
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.raise-sub {
+  color: var(--muted);
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.raise-form {
+  padding: 1rem 1.1rem 1.1rem;
+  border-top: 1px solid var(--border);
+  background: var(--card);
+}
+
+.form-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.9rem;
+  font-size: 0.9rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.85rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 800;
+  color: var(--secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: white;
+  font-size: 0.95rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.helper {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.form-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.span-12 { grid-column: span 12; }
+.span-6 { grid-column: span 6; }
+
+@media (max-width: 800px) {
+  .span-6 { grid-column: span 12; }
+  .complaints-header { flex-direction: column; align-items: flex-start; }
+  .complaints-header-actions { width: 100%; }
+  .search { width: 100%; min-width: 0; }
+}
+
+/* Complaint cards */
+.complaint-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.complaint-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.complaint-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.complaint-meta {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.complaint-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.complaint-desc {
+  margin-top: 0.85rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.complaint-image {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-top: 0.85rem;
+  border: 1px solid var(--border);
+}
+
+.complaints-section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.complaints-section h2 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.complaints-section p {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chip-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.03);
+  color: var(--muted);
+}
+
+.chip.my {
+  background: rgba(37, 99, 235, 0.10);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #1e3a8a;
+}
+
+/* Status chips */
+.chip.status.open {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.25);
+  color: #9a3412;
+}
+
+.chip.status.progress {
+  background: rgba(37, 99, 235, 0.10);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #1e3a8a;
+}
+
+.chip.status.resolved {
+  background: rgba(34, 197, 94, 0.10);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #166534;
+}
+
+.chip.status.neutral {
+  background: rgba(100, 116, 139, 0.10);
+  border-color: rgba(100, 116, 139, 0.25);
+  color: var(--muted);
+}
