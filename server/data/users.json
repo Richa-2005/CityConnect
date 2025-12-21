@@ -1,0 +1,6 @@
+[
+  { "id": "citizen001", "name": "Demo Citizen", "role": "CITIZEN" },
+  { "id": "gov001", "name": "Roads Officer", "role": "GOVT", "department": "roads", "zone": "Zone-2" },
+  { "id": "gov002", "name": "Transport Officer", "role": "GOVT", "department": "transport", "zone": "Zone-1" },
+  { "id": "auth001", "name": "City Commissioner", "role": "AUTHORITY" }
+]

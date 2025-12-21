@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cmp001",
+    "title": "Open drain near KIMS",
+    "description": "Open drain without barricades.",
+    "department": "roads",
+    "area": "Hosur",
+    "votes": 13,
+    "status": "Open",
+    "createdBy": "citizen001",
+    "createdAt": "2025-12-21T10:00:00.000Z"
+  },
+  {
+    "id": "cmp002",
+    "title": "Streetlight not working",
+    "description": "Dark road stretch near CBT.",
+    "department": "electricity",
+    "area": "CBT",
+    "votes": 5,
+    "status": "Open",
+    "createdBy": "citizen001",
+    "createdAt": "2025-12-20T19:30:00.000Z"
+  }
+]

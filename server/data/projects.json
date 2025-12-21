@@ -1,0 +1,26 @@
+[
+  {
+    "id": "proj001",
+    "title": "Road widening near CBT",
+    "department": "roads",
+    "area": "CBT",
+    "description": "Lane expansion + resurfacing",
+    "startDate": "2025-12-15",
+    "endDate": "2026-01-20",
+    "status": "Ongoing",
+    "createdBy": "gov001",
+    "createdAt": "2025-12-21T10:00:00.000Z"
+  },
+  {
+    "id": "proj002",
+    "title": "Drainage work near Hosur",
+    "department": "roads",
+    "area": "Hosur",
+    "description": "Sewer line repair + resurfacing",
+    "startDate": "2025-12-22",
+    "endDate": "2026-01-05",
+    "status": "Ongoing",
+    "createdBy": "gov001",
+    "createdAt": "2025-12-21T10:22:13.154Z"
+  }
+]
