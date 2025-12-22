@@ -1,0 +1,262 @@
+.govp-page{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.govp-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.govp-city{
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.govp-header h1{
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.govp-header p{
+  margin-top: 0.35rem;
+  color: var(--muted);
+}
+
+.govp-layout{
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.govp-create{
+  position: sticky;
+  top: 90px;
+  align-self: start;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label{
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+
+.field input, .field textarea, .field select{
+  padding: 0.6rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.field input:focus, .field textarea:focus, .field select:focus{
+  outline: none;
+  border-color: var(--primary);
+}
+
+.row2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.hint{
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.filters{
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filters .grow{ flex: 1; min-width: 220px; }
+
+.topline{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title{
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.meta{
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.mini{
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.project-body{
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  align-items: flex-start;
+}
+
+.project-image-wrap{
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.project-image{
+  width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: #e2e8f0;
+  display: block;
+}
+
+.project-desc{
+  flex: 1;
+  line-height: 1.7;
+}
+
+.project-desc b{
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--secondary);
+}
+
+.project-desc p{
+  margin: 0;
+  color: var(--muted);
+}
+
+.edit-row{
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 980px){
+  .govp-layout{
+    grid-template-columns: 1fr;
+  }
+  .govp-create{
+    position: static;
+  }
+  .project-body{
+    flex-direction: column;
+  }
+  .project-image-wrap{
+    max-width: 100%;
+  }
+  .project-image{
+    height: 220px;
+  }
+  .row2{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Updates timeline */
+.updates {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.updates-title {
+  font-weight: 900;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+}
+
+.update-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.7);
+  padding: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.update-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.45rem;
+}
+
+.update-note {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.update-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin-top: 0.65rem;
+  background: #e2e8f0;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal {
+  width: 100%;
+  max-width: 520px;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem;
+}
+
+.modal h3 {
+  margin: 0 0 0.9rem 0;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}

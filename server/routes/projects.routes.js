@@ -44,14 +44,15 @@ router.get("/:id", (req, res) => {
  */
 router.post("/gov", requireAuth, requireRole("GOVT"), (req, res) => {
   const {
-    title,
-    department, // optional: if not sent, we force user's dept
-    area = "",
-    description = "",
-    startDate,
-    endDate,
-    status = "Planned"
-  } = req.body;
+  title,
+  department,
+  area = "",
+  description = "",
+  startDate,
+  endDate,
+  status = "Planned",
+  imageUrl = ""
+} = req.body;
 
   if (!title || !startDate || !endDate) {
     return res.status(400).json({ error: "title, startDate, endDate are required" });
@@ -69,6 +70,7 @@ router.post("/gov", requireAuth, requireRole("GOVT"), (req, res) => {
     department: req.user.department || department || "general",
     area,
     description,
+    imageUrl,     
     startDate,
     endDate,
     status,
@@ -98,7 +100,7 @@ router.patch("/gov/:id", requireAuth, requireRole("GOVT"), (req, res) => {
     return res.status(403).json({ error: "Cannot edit projects outside your department" });
   }
 
-  const allowedFields = ["title", "area", "description", "startDate", "endDate", "status"];
+  const allowedFields = ["title", "area", "description", "imageUrl", "startDate", "endDate", "status"];
   for (const key of Object.keys(req.body)) {
     if (!allowedFields.includes(key)) continue;
     projects[idx][key] = req.body[key];
@@ -109,6 +111,21 @@ router.patch("/gov/:id", requireAuth, requireRole("GOVT"), (req, res) => {
   if (projects[idx].status && !allowedStatus.includes(projects[idx].status)) {
     return res.status(400).json({ error: `status must be one of ${allowedStatus.join(", ")}` });
   }
+
+const { progressNote = "", progressImageUrl = "" } = req.body;
+
+if (progressNote && progressNote.trim()) {
+  if (!Array.isArray(projects[idx].updates)) projects[idx].updates = [];
+
+  projects[idx].updates.unshift({
+    note: progressNote.trim(),
+    imageUrl: progressImageUrl?.trim() || "",
+    by: req.user.id,
+    at: new Date().toISOString()
+  });
+
+  projects[idx].lastUpdatedAt = new Date().toISOString();
+}
 
   writeJSON("data/projects.json", projects);
   res.json(projects[idx]);

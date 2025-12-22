@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 
 // CITIZEN: CREATE COMPLAINT
 router.post("/", requireAuth, requireRole("CITIZEN"), (req, res) => {
-  const { title, description = "", department, area = "" } = req.body;
+  const { title, description = "", department, area = "", imageUrl = "" } = req.body;
   if (!title || !department) {
     return res.status(400).json({ error: "title and department are required" });
   }
@@ -32,6 +32,7 @@ router.post("/", requireAuth, requireRole("CITIZEN"), (req, res) => {
     description,
     department,
     area,
+    imageUrl,
     votes: 0,
     status: "Open",
     createdBy: req.user.id,

@@ -95,14 +95,45 @@ export default function CitizenProjects() {
                 <span className={`chip status ${statusClass(p.status)}`}>{p.status}</span>
               </div>
             </div>
+            
 
             <div className="project-right">
               <div className="date-pill">{p.startDate} → {p.endDate}</div>
             </div>
           </div>
+          
 
-          <div className="project-desc">
-            {p.description || "No description available."}
+          <div className="project-body">
+            {p.imageUrl && (
+              <div className="project-image-wrap">
+                <img className="project-image" src={p.imageUrl} alt="Project" />
+              </div>
+            )}
+
+            <div className="project-desc">
+              <b>Description</b>
+              <p>{p.description || "No description available."}</p>
+              {Array.isArray(p.updates) && p.updates.length > 0 && (
+  <div className="updates">
+    <div className="updates-title">Recent Updates</div>
+
+    {p.updates.slice(0, 3).map((u, i) => (
+      <div className="update-item" key={i}>
+        <div className="update-meta">
+          <span className="badge">{new Date(u.at).toLocaleString("en-IN")}</span>
+          <span className="badge blue">by {u.by}</span>
+        </div>
+
+        <div className="update-note">{u.note}</div>
+
+        {u.imageUrl && (
+          <img className="update-image" src={u.imageUrl} alt="Project update" />
+        )}
+      </div>
+    ))}
+  </div>
+)}
+            </div>
           </div>
         </div>
       ))}

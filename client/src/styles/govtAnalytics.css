@@ -1,0 +1,201 @@
+/* ===== Govt Analytics Page ===== */
+
+.analytics {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header */
+.analytics-header {
+  margin-bottom: 1.5rem;
+}
+
+.analytics .city {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.analytics h1 {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.analytics p {
+  color: var(--muted);
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+}
+
+/* Grid */
+.analytics .grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.span-3 { grid-column: span 3; }
+.span-6 { grid-column: span 6; }
+.span-12 { grid-column: span 12; }
+
+@media (max-width: 900px) {
+  .span-3,
+  .span-6,
+  .span-12 {
+    grid-column: span 12;
+  }
+}
+
+/* Card */
+.analytics .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics .card h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--secondary);
+  margin-bottom: 0.6rem;
+}
+
+/* Big numbers */
+.big {
+  font-size: 2.6rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.big.orange { color: #f97316; }
+.big.blue { color: #2563eb; }
+.big.green { color: #22c55e; }
+
+/* Bar rows */
+.bar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 40px;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.bar-row span {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.bar {
+  height: 8px;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar > div {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+/* Pills */
+.pill-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.pill {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+}
+
+.pill.neutral {
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--secondary);
+}
+
+.pill.orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #9a3412;
+  border-color: rgba(249, 115, 22, 0.25);
+}
+
+.pill.blue {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1e3a8a;
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.pill.green {
+  background: rgba(34, 197, 94, 0.12);
+  color: #166534;
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+/* Muted text */
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.miniChart{
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.9rem;
+  align-items: end;
+  height: 220px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.7);
+}
+
+.miniCol{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+/* this gives the bar a REAL drawing space */
+.barWrap{
+  height: 140px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.miniBar{
+  width: 18px;
+  border-radius: 999px;
+  background: var(--primary);
+  min-height: 6px;           /* ensures small values still show */
+  box-shadow: var(--shadow-sm);
+}
+
+.miniLabel{
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.miniValue{
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--secondary);
+}

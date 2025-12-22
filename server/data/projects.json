@@ -9,7 +9,11 @@
     "endDate": "2026-01-20",
     "status": "Ongoing",
     "createdBy": "gov001",
-    "createdAt": "2025-12-21T10:00:00.000Z"
+    "createdAt": "2025-12-21T10:00:00.000Z",
+    "imageUrl": "https://toolkit.irap.org/wp-content/uploads/2022/02/7.-Lane-Widening.jpg",
+    "updates": [
+  { "note": "...", "imageUrl": "...", "by": "gov001", "at": "2025-12-22T..." }
+]
   },
   {
     "id": "proj002",
@@ -21,6 +25,16 @@
     "endDate": "2026-01-05",
     "status": "Ongoing",
     "createdBy": "gov001",
-    "createdAt": "2025-12-21T10:22:13.154Z"
+    "createdAt": "2025-12-21T10:22:13.154Z",
+    "imageUrl": "https://mtcopeland.com/wp-content/uploads/2021/12/shutterstock_1063804841-min-scaled.jpg",
+    "updates": [
+      {
+        "note": "site inspection done",
+        "imageUrl": "",
+        "by": "gov001",
+        "at": "2025-12-22T05:01:50.587Z"
+      }
+    ],
+    "lastUpdatedAt": "2025-12-22T05:01:50.587Z"
   }
 ]

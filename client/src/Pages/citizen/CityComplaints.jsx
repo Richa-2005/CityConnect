@@ -50,14 +50,12 @@ const myId = user?.id;
 
     setSubmitting(true);
     try {
-      // Backend accepts: title, description, department, area
-      // imageUrl isn't stored by backend yet (ok for now)
-      await complaintsAPI.create({
+        await complaintsAPI.create({
         title: form.title.trim(),
         department: form.department,
         area: form.area.trim(),
         description: form.description.trim(),
-        // imageUrl intentionally not sent unless you later add it to backend
+        imageUrl: form.imageUrl.trim(),
       });
 
       setForm({
@@ -77,7 +75,7 @@ const myId = user?.id;
     }
   };
 
-  // Optional: local filter UI (quick judge-friendly)
+  // Optional: local filter UI 
   const [q, setQ] = useState("");
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
@@ -184,7 +182,7 @@ const myId = user?.id;
               </div>
 
               <div className="field span-12">
-                <label>Image URL (optional for demo)</label>
+                <label>Image URL </label>
                 <input
                   name="imageUrl"
                   value={form.imageUrl}
@@ -262,13 +260,20 @@ const myId = user?.id;
               </div>
             </div>
 
-            {/* Show image if present in data (or if you later store it) */}
-            {c.imageUrl && (
-              <img className="complaint-image" src={c.imageUrl} alt="Complaint" />
-            )}
+           
+            
 
-            <div className="complaint-desc">
-              {c.description || "No description provided."}
+            <div className="complaint-body">
+              {c.imageUrl && (
+                <div className="complaint-image-wrap">
+                  <img className="complaint-image" src={c.imageUrl} alt="Complaint" />
+                </div>
+              )}
+
+              <div className="complaint-desc">
+                <b>Description</b>
+                <p>{c.description || "No description provided."}</p>
+              </div>
             </div>
           </div>
         ))}

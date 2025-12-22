@@ -16,9 +16,9 @@ export default function Navbar() {
     <header className="navbar">
       <div className="navbar-inner">
         <Link to="/" className="nav-brand">
-        {/* future logo */}
-        <div className="nav-logo">CC</div>
-        CityConnect
+        
+        <div className="nav-logo"><img src="/logo.jpeg" className="nav-logo"></img></div>
+       
       </Link>
         
 
@@ -44,7 +44,8 @@ export default function Navbar() {
           {role === "govt" && (
             <>
               <NavLink to="/govt/projects">Projects</NavLink>
-              <NavLink to="/govt/analytics">Analytics</NavLink>
+             <NavLink to="/govt/analytics">Analytics</NavLink>
+              <NavLink to="/govt/complaints">Complaints</NavLink>
             </>
           )}
 
