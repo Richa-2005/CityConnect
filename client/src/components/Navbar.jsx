@@ -30,11 +30,13 @@ export default function Navbar() {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/citizen/complaints">Complaints</NavLink>
               <NavLink to="/citizen/projects">Projects</NavLink>
+              <Link to="/transport">Transport</Link>
             </>
           )}
 
           {role === "authority" && (
             <>
+              <NavLink to="/">Home</NavLink>
               <NavLink to="/authority/complaints">Complaints</NavLink>
               <NavLink to="/authority/projects">Projects</NavLink>
               <NavLink to="/authority/alerts">Alerts</NavLink>
@@ -43,6 +45,7 @@ export default function Navbar() {
 
           {role === "govt" && (
             <>
+              <NavLink to="/">Home</NavLink>
               <NavLink to="/govt/projects">Projects</NavLink>
              <NavLink to="/govt/analytics">Analytics</NavLink>
               <NavLink to="/govt/complaints">Complaints</NavLink>

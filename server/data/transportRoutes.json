@@ -1,0 +1,58 @@
+[
+  {
+    "from": "st001",
+    "to": "st002",
+    "cost": 8,
+    "mode": "BUS",
+    "routeNo": "R1",
+    "routeName": "CBT–Station Shuttle"
+  },
+  {
+    "from": "st002",
+    "to": "st003",
+    "cost": 10,
+    "mode": "BUS",
+    "routeNo": "R2",
+    "routeName": "Station–Vidyanagar"
+  },
+  {
+    "from": "st001",
+    "to": "st004",
+    "cost": 12,
+    "mode": "BUS",
+    "routeNo": "R3",
+    "routeName": "CBT–KIMS"
+  },
+  {
+    "from": "st004",
+    "to": "st007",
+    "cost": 9,
+    "mode": "BUS",
+    "routeNo": "R4",
+    "routeName": "KIMS–Keshwapur"
+  },
+  {
+    "from": "st007",
+    "to": "st003",
+    "cost": 7,
+    "mode": "BUS",
+    "routeNo": "R5",
+    "routeName": "Keshwapur–Vidyanagar"
+  },
+  {
+    "from": "st002",
+    "to": "st005",
+    "cost": 6,
+    "mode": "TRAIN",
+    "routeNo": "T1",
+    "routeName": "Station–Unkal Local"
+  },
+  {
+    "from": "st005",
+    "to": "st006",
+    "cost": 11,
+    "mode": "BUS",
+    "routeNo": "R6",
+    "routeName": "Unkal–Airport Rd"
+  }
+]

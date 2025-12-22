@@ -1,38 +1,36 @@
-
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // {id, name, role, dept, ...}
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem("cityconnect_user");
+    const stored = localStorage.getItem("cc_user");
     if (stored) setUser(JSON.parse(stored));
   }, []);
 
- 
-const login = (userObj) => {
-  const normalized = {
-    ...userObj,
-    role: userObj?.role?.toLowerCase(), 
-    department: userObj?.department || userObj?.dept || null,
-  };
+  const login = (userObj) => {
+    const normalized = {
+      ...userObj,
+      role: userObj?.role?.toLowerCase(),
+      department: userObj?.department || userObj?.dept || null,
+    };
 
-  setUser(normalized);
-  localStorage.setItem("cityconnect_user", JSON.stringify(normalized));
-};
+    setUser(normalized);
+    localStorage.setItem("cc_user", JSON.stringify(normalized));
+  };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("cityconnect_user");
+    localStorage.removeItem("cc_user");
   };
 
   const value = {
     user,
     isAuthed: !!user,
     role: user?.role || null,
-    dept: user?.dept || null,
+    dept: user?.department || null,   
     login,
     logout,
   };

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "al005",
+    "title": "Major Road Blockage near CBT",
+    "message": "Emergency road repair work is underway due to a collapsed drainage line near the CBT main junction.\nTraffic movement is currently restricted and heavy congestion is expected during peak hours.\n\nCitizens are advised to avoid the CBT–Station Road stretch and use Keshwapur or Gokul Road as alternate routes.\nTraffic police personnel are deployed for assistance.",
+    "severity": "Critical",
+    "department": "roads",
+    "area": "CBT",
+    "tags": [
+      "CBT",
+      "roads"
+    ],
+    "startsAt": "2025-12-22T16:02:22.967Z",
+    "endsAt": "2025-12-23T04:45:00.000Z",
+    "active": true,
+    "createdBy": "auth001",
+    "createdAt": "2025-12-22T16:02:22.978Z"
+  },
+  {
+    "id": "al001",
+    "title": "Major Road Blockage near CBT",
+    "message": "Emergency road repair in progress. Avoid CBT–Station Road stretch. Use Keshwapur diversion.",
+    "severity": "Critical",
+    "department": "roads",
+    "area": "CBT",
+    "tags": [
+      "CBT",
+      "roads"
+    ],
+    "startsAt": "2025-12-21T08:00:00.000Z",
+    "endsAt": "2025-12-29T23:59:00.000Z",
+    "active": true,
+    "createdBy": "auth001",
+    "createdAt": "2025-12-21T08:00:00.000Z"
+  },
+  {
+    "id": "al999",
+    "title": "ALERT: Major Road Blockage near CBT",
+    "message": "Emergency road repair in progress. Avoid CBT–Station Road stretch. Expect heavy delays. Use Keshwapur diversion.",
+    "severity": "Critical",
+    "department": "roads",
+    "area": "CBT",
+    "status": "Active",
+    "active": false,
+    "startAt": "2025-12-22T06:00:00.000Z",
+    "endAt": "2025-12-30T23:59:00.000Z",
+    "createdBy": "gov001",
+    "createdAt": "2025-12-22T06:05:00.000Z"
+  },
+  {
+    "id": "al001",
+    "title": "Water supply interruption",
+    "message": "Scheduled maintenance in Vidyanagar. Expect low pressure 10AM–2PM.",
+    "severity": "Medium",
+    "department": "water",
+    "area": "Vidyanagar",
+    "createdBy": "gov001",
+    "createdAt": "2025-12-20T08:00:00.000Z",
+    "active": true
+  },
+  {
+    "id": "al002",
+    "title": "Road closure near CBT",
+    "message": "Road widening work—diversion in place. Use alternate route via Station Rd.",
+    "severity": "High",
+    "department": "roads",
+    "area": "CBT",
+    "createdBy": "gov001",
+    "createdAt": "2025-12-21T06:30:00.000Z",
+    "active": true
+  }
+]

@@ -7,10 +7,20 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import CityComplaints from "./pages/citizen/CityComplaints";
 import CitizenProjects from "./pages/citizen/CitizenProjects";
+import Transport from "./pages/transport/Transport";
 
 import GovtComplaints from "./pages/govt/GovtComplaints";
 import GovtProjects from "./pages/govt/GovtProjects";
 import GovtAnalytics from "./pages/govt/GovtAnalytics";
+
+import AlertTicker from "./components/AlertTicker";
+import AlertPopup from "./components/AlertPopup";
+import AlertFooter from "./components/AlertFooter";
+
+import AuthorityAlerts from "./pages/authority/AuthorityAlerts";
+import AuthorityProjects from "./pages/authority/AuthorityProjects";
+import AuthorityComplaints from "./pages/authority/AuthorityComplaints";
+
 export default function App() {
   const { isAuthed } = useAuth();
 
@@ -18,7 +28,9 @@ export default function App() {
     <>
      
       {isAuthed && <Navbar />}
-
+      {isAuthed && <AlertTicker />}
+      {isAuthed && <AlertPopup />}
+      {isAuthed && <AlertFooter />}
       <Routes>
     
         <Route
@@ -40,6 +52,21 @@ export default function App() {
           path="/auth/signup"
           element={isAuthed ? <Navigate to="/" replace /> : <Signup />}
         />
+
+        <Route
+          path="/authority/alerts"
+          element={<AuthorityAlerts />}
+        />
+
+        <Route path="/authority/projects" 
+        element={<AuthorityProjects />}
+         />
+
+         <Route 
+         path="/authority/complaints" 
+         element={<AuthorityComplaints />} 
+         />
+
         <Route
           path="/citizen/projects"
           element={
@@ -48,6 +75,8 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route path="/transport" element={<Transport />} />
        
         <Route
           path="/citizen/complaints"

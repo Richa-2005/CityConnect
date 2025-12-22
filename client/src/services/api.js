@@ -7,11 +7,8 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const stored = localStorage.getItem("cityconnect_user");
-  if (stored) {
-    const user = JSON.parse(stored);
-    if (user?.id) config.headers["x-user-id"] = user.id;
-  }
+  const user = JSON.parse(localStorage.getItem("cc_user") || "null");
+  if (user?.id) config.headers["x-user-id"] = user.id;
   return config;
 });
 
@@ -21,7 +18,7 @@ api.interceptors.response.use(
   (err) => {
     if (err?.response?.status === 401) {
     
-      localStorage.removeItem("cityconnect_user");
+      localStorage.removeItem("cc_user");
     }
     return Promise.reject(err);
   }

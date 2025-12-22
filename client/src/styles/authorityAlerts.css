@@ -1,0 +1,208 @@
+/* =========================
+   Authority Alerts (SCOPED)
+   Root: .authority-alerts
+   ========================= */
+
+.authority-alerts.dash {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6.5rem; /* space for fixed alert footer */
+}
+
+.authority-alerts .dash-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.authority-alerts .dash-city {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--primary, #2563eb);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.authority-alerts .dash-title {
+  font-size: 2.2rem;
+  font-weight: 950;
+  color: var(--secondary, #0f172a);
+  line-height: 1.1;
+}
+
+.authority-alerts .dash-subtitle {
+  color: var(--muted, #64748b);
+  margin-top: 0.35rem;
+  font-weight: 650;
+}
+
+/* ===== GRID ===== */
+.authority-alerts .grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.authority-alerts .span12 { grid-column: span 12; }
+.authority-alerts .span6  { grid-column: span 6; }
+.authority-alerts .span4  { grid-column: span 4; }
+.authority-alerts .span3  { grid-column: span 3; }
+
+/* ===== CARD ===== */
+.authority-alerts .card {
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.05);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.authority-alerts .card h3 {
+  font-size: 1rem;
+  font-weight: 950;
+  color: var(--secondary, #0f172a);
+  margin-bottom: 0.85rem;
+}
+
+/* ===== FORM ===== */
+.authority-alerts .form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.authority-alerts .input,
+.authority-alerts .textarea,
+.authority-alerts .select {
+  width: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: #fff;
+  color: #0f172a;
+  outline: none;
+}
+
+.authority-alerts .textarea {
+  resize: vertical;
+}
+
+.authority-alerts .label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 850;
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.authority-alerts .row2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.authority-alerts .btn {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  padding: 0.75rem 0.95rem;
+  font-weight: 950;
+  cursor: pointer;
+  background: #fff;
+}
+
+.authority-alerts .btn.primary {
+  background: var(--primary, #2563eb);
+  color: white;
+  border-color: transparent;
+}
+
+.authority-alerts .btn.primary:hover { filter: brightness(0.95); }
+
+.authority-alerts .hint {
+  color: var(--muted, #64748b);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ===== LIST ===== */
+.authority-alerts .list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.authority-alerts .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.authority-alerts .row-title {
+  font-weight: 950;
+  color: #0f172a;
+}
+
+.authority-alerts .row-meta {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 750;
+}
+
+.authority-alerts .row-desc {
+  margin-top: 0.5rem;
+  color: #0f172a;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.authority-alerts .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.authority-alerts .btn-sm {
+  padding: 0.45rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  font-weight: 950;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.authority-alerts .btn-sm:hover { filter: brightness(0.98); }
+
+.authority-alerts .btn-sm.danger {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #991b1b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .authority-alerts .span6,
+  .authority-alerts .span4,
+  .authority-alerts .span3 {
+    grid-column: span 12;
+  }
+  .authority-alerts .row2 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .authority-alerts.dash { padding: 1.25rem 1rem 6.5rem; }
+  .authority-alerts .dash-title { font-size: 1.8rem; }
+}

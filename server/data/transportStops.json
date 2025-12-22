@@ -1,0 +1,9 @@
+[
+  { "id": "st001", "name": "CBT Bus Stand", "area": "CBT" },
+  { "id": "st002", "name": "Railway Station", "area": "Station Road" },
+  { "id": "st003", "name": "Vidyanagar", "area": "Vidyanagar" },
+  { "id": "st004", "name": "KIMS Hospital", "area": "Hosur" },
+  { "id": "st005", "name": "Unkal Lake", "area": "Unkal" },
+  { "id": "st006", "name": "Airport Road", "area": "Gokul Road" },
+  { "id": "st007", "name": "Keshwapur Circle", "area": "Keshwapur" }
+]

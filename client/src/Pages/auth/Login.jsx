@@ -46,12 +46,12 @@ export default function Login() {
         and government departments to build smarter, responsive cities.
       </p>
 
-      <ul className="auth-points">
-        <li>📍 Report and track civic issues</li>
-        <li>🏛 Transparent project monitoring</li>
-        <li>🚦 Smarter transport and alerts</li>
-        <li>🤝 One city. One system.</li>
-      </ul>
+      <ol className="auth-points">
+        <li>Report and track civic issues</li>
+        <li>Transparent project monitoring</li>
+        <li>Smarter transport and alerts</li>
+        <li>One city. One system.</li>
+      </ol>
     </div>
 
     <div className="auth-card">

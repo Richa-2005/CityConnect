@@ -1,0 +1,87 @@
+.authority-projects.dash {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+.authority-projects .big {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.authority-projects .big.green {
+  color: #166534;
+}
+
+.authority-projects .big.danger {
+  color: #991b1b;
+}
+
+/* Project rows */
+.authority-projects .project-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.9rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+  background: white;
+}
+
+.authority-projects .project-row.delayed {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.authority-projects .project-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-end;
+}
+
+/* Status pills */
+.authority-projects .pill.status {
+  font-weight: 900;
+}
+
+.authority-projects .pill.status.planned {
+  background: rgba(100, 116, 139, 0.12);
+}
+
+.authority-projects .pill.status.ongoing {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.authority-projects .pill.status.completed {
+  background: rgba(34, 197, 94, 0.12);
+}
+
+/* ===== GRID SYSTEM (FIX) ===== */
+.authority-projects .grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+/* column spans */
+.authority-projects .span3 {
+  grid-column: span 3;
+}
+.authority-projects .span6 {
+  grid-column: span 6;
+}
+.authority-projects .span12 {
+  grid-column: span 12;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+  .authority-projects .span3,
+  .authority-projects .span6 {
+    grid-column: span 12;
+  }
+}

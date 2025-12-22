@@ -113,7 +113,7 @@
     "description": "Open sewage causing unbearable smell.",
     "department": "water",
     "area": "Dajibanpeth",
-    "votes": 26,
+    "votes": 37,
     "status": "In Progress",
     "createdBy": "citizen009",
     "imageUrl": "/images/complaints/sewage-market.jpg",
@@ -125,11 +125,10 @@
     "description": "Pothole causing traffic jams and bike skidding.",
     "department": "roads",
     "area": "Vidyanagar",
-    "votes": 36,
-    "status": "In Progress",
+    "votes": 38,
+    "status": "Resolved",
     "createdBy": "citizen002",
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdX53hiGrL-7jqfjwhTdC9CSgo6PcghTx8Ng&s",
     "createdAt": "2025-12-17T07:30:00.000Z"
   }
-
 ]
