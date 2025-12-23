@@ -35,29 +35,35 @@ export default function GovtComplaints() {
   useEffect(() => {
     if (dept) load();
   }, [dept, sort]);
+const notResolved = (c) =>
+  String(c.status || "").trim().toLowerCase() !== "resolved";
 
-  const filtered = useMemo(() => {
-    const query = q.trim().toLowerCase();
+const filtered = useMemo(() => {
+  const query = q.trim().toLowerCase();
 
-    return list.filter((c) => {
-      if (statusFilter !== "all" && c.status !== statusFilter) return false;
+  return list
+    .filter(notResolved)
+    .filter((c) => {
+      if (statusFilter === "all") return true;
+      return c.status === statusFilter;
+    })
+    .filter((c) => {
       if (!query) return true;
-
       const hay = `${c.title} ${c.description} ${c.area} ${c.department}`.toLowerCase();
       return hay.includes(query);
     });
-  }, [list, statusFilter, q]);
+}, [list, statusFilter, q]);
 
   const updateStatus = async (id, newStatus) => {
     await complaintsAPI.govUpdateStatus(id, newStatus);
     await load();
   };
-  const top5 = useMemo(() => {
+ const top5 = useMemo(() => {
   return [...list]
+    .filter(notResolved) // ✅ REQUIRED
     .sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0))
     .slice(0, 5);
 }, [list]);
-
   return (
     <div className="govt-page">
       <div className="govt-header">

@@ -50,20 +50,29 @@ router.get("/path", (req, res) => {
     if (!graph[e.to]) graph[e.to] = [];
 
     graph[e.from].push({
-      node: e.to,
-      cost: e.cost,
-      mode: e.mode || "BUS",
-      routeNo: e.routeNo || "",
-      routeName: e.routeName || ""
-    });
+  node: e.to,
+  cost: e.cost,
+  mode: e.mode || "BUS",
+  routeNo: e.routeNo || "",
+  routeName: e.routeName || "",
 
+  // ✅ time fields
+  travelTimeMins: Number(e.travelTimeMins || 0),
+  frequencyMins: Number(e.frequencyMins || 0),
+  operatingHours: e.operatingHours || ""
+});
     graph[e.to].push({
-      node: e.from,
-      cost: e.cost,
-      mode: e.mode || "BUS",
-      routeNo: e.routeNo || "",
-      routeName: e.routeName || ""
-    }); // undirected
+  node: e.from,
+  cost: e.cost,
+  mode: e.mode || "BUS",
+  routeNo: e.routeNo || "",
+  routeName: e.routeName || "",
+
+  // ✅ time fields
+  travelTimeMins: Number(e.travelTimeMins || 0),
+  frequencyMins: Number(e.frequencyMins || 0),
+  operatingHours: e.operatingHours || ""
+});
   }
 
   const result = dijkstra(graph, from, to);
@@ -76,13 +85,18 @@ router.get("/path", (req, res) => {
 
   // Build journey legs (with stop names)
   const journey = (result.legs || []).map((leg) => ({
-    from: stopMap[leg.from],
-    to: stopMap[leg.to],
-    mode: leg.mode,
-    routeNo: leg.routeNo,
-    routeName: leg.routeName,
-    cost: leg.cost
-  }));
+  from: stopMap[leg.from],
+  to: stopMap[leg.to],
+  mode: leg.mode,
+  routeNo: leg.routeNo,
+  routeName: leg.routeName,
+  cost: leg.cost,
+
+  // ✅ time fields
+  travelTimeMins: leg.travelTimeMins,
+  frequencyMins: leg.frequencyMins,
+  operatingHours: leg.operatingHours
+}));
 
   // Build instructions + transfers count (judge-friendly)
   const instructions = [];
@@ -113,16 +127,17 @@ router.get("/path", (req, res) => {
       }
     }
   }
-
+const totalTimeMins = journey.reduce((sum, j) => sum + Number(j.travelTimeMins || 0), 0);
   res.json({
-    from: stopMap[from],
-    to: stopMap[to],
-    totalCost: result.distance,
-    transfers,
-    path: pathStops,
-    journey,
-    instructions
-  });
+  from: stopMap[from],
+  to: stopMap[to],
+  totalCost: result.distance,
+  totalTimeMins,
+  transfers,
+  path: pathStops,
+  journey,
+  instructions
+});
 });
 
 export default router;

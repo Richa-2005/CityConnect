@@ -1,9 +1,58 @@
 [
-  { "id": "st001", "name": "CBT Bus Stand", "area": "CBT" },
-  { "id": "st002", "name": "Railway Station", "area": "Station Road" },
-  { "id": "st003", "name": "Vidyanagar", "area": "Vidyanagar" },
-  { "id": "st004", "name": "KIMS Hospital", "area": "Hosur" },
-  { "id": "st005", "name": "Unkal Lake", "area": "Unkal" },
-  { "id": "st006", "name": "Airport Road", "area": "Gokul Road" },
-  { "id": "st007", "name": "Keshwapur Circle", "area": "Keshwapur" }
+  {
+    "id": "st001",
+    "name": "CBT Bus Stand",
+    "area": "CBT",
+    "firstService": "05:30",
+    "lastService": "23:00",
+    "avgWaitMins": 5
+  },
+  {
+    "id": "st002",
+    "name": "Railway Station",
+    "area": "Station Road",
+    "firstService": "04:45",
+    "lastService": "23:30",
+    "avgWaitMins": 7
+  },
+  {
+    "id": "st003",
+    "name": "Vidyanagar",
+    "area": "Vidyanagar",
+    "firstService": "06:00",
+    "lastService": "22:30",
+    "avgWaitMins": 10
+  },
+  {
+    "id": "st004",
+    "name": "KIMS Hospital",
+    "area": "Hosur",
+    "firstService": "05:00",
+    "lastService": "22:00",
+    "avgWaitMins": 8
+  },
+  {
+    "id": "st005",
+    "name": "Unkal Lake",
+    "area": "Unkal",
+    "firstService": "06:30",
+    "lastService": "21:30",
+    "avgWaitMins": 12
+  },
+  {
+    "id": "st006",
+    "name": "Airport Road",
+    "area": "Gokul Road",
+    "firstService": "05:30",
+    "lastService": "22:00",
+    "avgWaitMins": 15
+  },
+  {
+    "id": "st007",
+    "name": "Keshwapur Circle",
+    "area": "Keshwapur",
+    "firstService": "06:00",
+    "lastService": "22:30",
+    "avgWaitMins": 9
+  }
 ]

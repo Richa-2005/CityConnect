@@ -51,10 +51,10 @@ export default function Signup() {
       </p>
 
       <ul className="auth-points">
-        <li>📍 Report and track civic issues</li>
-        <li>🏛 Transparent project monitoring</li>
-        <li>🚦 Smarter transport and alerts</li>
-        <li>🤝 One city. One system.</li>
+        <li>Report and track civic issues</li>
+        <li>Transparent project monitoring</li>
+        <li>Smarter transport and alerts</li>
+        <li>One city. One system.</li>
       </ul>
     </div>
   <div className="auth-card">
@@ -72,7 +72,7 @@ export default function Signup() {
         <option value="citizen">Citizen</option>
         <option value="authority">Authority</option>
         <option value="govt">Govt</option>
-        <option value="transport">Transport</option>
+     
       </select>
 
       {needsDept && (

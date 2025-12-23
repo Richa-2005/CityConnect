@@ -21,7 +21,7 @@ const myId = user?.id;
     description: "",
     imageUrl: "", // optional (demo)
   });
-
+const notResolved = (c) => (c.status || "").toLowerCase() !== "resolved";
   const onChange = (e) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
@@ -78,14 +78,15 @@ const myId = user?.id;
   // Optional: local filter UI 
   const [q, setQ] = useState("");
   const filtered = useMemo(() => {
-    const query = q.trim().toLowerCase();
-    if (!query) return list;
-    return list.filter((c) =>
+  const query = q.trim().toLowerCase();
+  return list
+    .filter(notResolved)
+    .filter((c) =>
       `${c.title} ${c.description} ${c.department} ${c.area}`
         .toLowerCase()
         .includes(query)
     );
-  }, [list, q]);
+}, [list, q]);
 
   const statusClass = (status = "") => {
   const s = status.toLowerCase();

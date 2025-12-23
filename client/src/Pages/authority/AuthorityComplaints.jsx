@@ -35,7 +35,9 @@ export default function AuthorityComplaints() {
 useEffect(() => {
   load();
 }, [sort]); 
+
 const notResolved = (c) => (c.status || "").toLowerCase() !== "resolved";
+
 const filtered = useMemo(() => {
   const query = q.trim().toLowerCase();
 

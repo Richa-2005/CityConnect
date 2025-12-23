@@ -44,13 +44,19 @@ export default function dijkstra(graph, start, end) {
         prevNode[next] = cur;
 
         // store the actual edge used to reach `next`
+        // inside relax edges section
         prevEdge[next] = {
           from: cur,
           to: next,
           cost,
           mode: edge.mode || "BUS",
           routeNo: edge.routeNo || "",
-          routeName: edge.routeName || ""
+          routeName: edge.routeName || "",
+
+          
+          travelTimeMins: Number(edge.travelTimeMins || 0),
+          frequencyMins: Number(edge.frequencyMins || 0),
+          operatingHours: edge.operatingHours || ""
         };
       }
     }

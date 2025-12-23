@@ -141,10 +141,18 @@ export default function Transport() {
                       <div className="tl-top">
                         <div className="tl-route">
                           <span className="pill warning">{label}</span>
+                          
                           {leg.routeName ? <span className="tl-rname">{leg.routeName}</span> : null}
                         </div>
                         <span className="pill neutral">Cost: {leg.cost}</span>
                       </div>
+                      <div className="tl-time">
+  ⏱ {leg.travelTimeMins || "—"} mins
+  <span className="muted"> • Every {leg.frequencyMins || "—"} mins</span>
+  {leg.operatingHours ? (
+    <span className="muted"> • 🕒 {leg.operatingHours}</span>
+  ) : null}
+</div>
 
                       <div className="tl-stops">
                         <b>{leg.from?.name}</b> <span className="muted">({leg.from?.area})</span>

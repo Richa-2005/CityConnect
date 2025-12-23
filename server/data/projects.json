@@ -1,40 +1,95 @@
 [
   {
     "id": "proj001",
-    "title": "Road widening near CBT",
-    "department": "roads",
-    "area": "CBT",
-    "description": "Lane expansion + resurfacing",
-    "startDate": "2025-12-15",
-    "endDate": "2026-01-20",
-    "status": "Ongoing",
-    "createdBy": "gov001",
-    "createdAt": "2025-12-21T10:00:00.000Z",
-    "imageUrl": "https://toolkit.irap.org/wp-content/uploads/2022/02/7.-Lane-Widening.jpg",
-    "updates": [
-  { "note": "...", "imageUrl": "...", "by": "gov001", "at": "2025-12-22T..." }
-]
+    "title": "New bus shelter construction",
+    "description": "Construction of a modern bus shelter with seating, lighting, and route information boards to improve commuter experience.",
+    "department": "transport",
+    "area": "Navanagar",
+    "status": "Planned",
+    "startDate": "2026-01-10",
+    "endDate": "2026-03-05",
+    "imageUrl": "https://constrofacilitator.com/wp-content/uploads/2023/01/bus-stop.jpg.webp",
+    "createdBy": "gov002",
+    "createdAt": "2025-12-01T09:30:00.000Z"
   },
   {
     "id": "proj002",
-    "title": "Drainage work near Hosur",
+    "title": "Road resurfacing near CBT",
+    "description": "Resurfacing of damaged road stretch near CBT to reduce traffic congestion and accidents during peak hours.",
     "department": "roads",
-    "area": "Hosur",
-    "description": "Sewer line repair + resurfacing",
-    "startDate": "2025-12-22",
-    "endDate": "2026-01-05",
+    "area": "CBT",
     "status": "Ongoing",
+    "startDate": "2025-11-20",
+    "endDate": "2025-12-30",
+    "imageUrl": "https://media.istockphoto.com/id/1330075519/photo/resurfacing-residential-road-with-asphalt-paving-machine.jpg?s=612x612&w=0&k=20&c=eHMePNKI3DmKpcLX7CgktJz8NB9pl2_0y1EAzgBXcF0=",
     "createdBy": "gov001",
-    "createdAt": "2025-12-21T10:22:13.154Z",
-    "imageUrl": "https://mtcopeland.com/wp-content/uploads/2021/12/shutterstock_1063804841-min-scaled.jpg",
-    "updates": [
-      {
-        "note": "site inspection done",
-        "imageUrl": "",
-        "by": "gov001",
-        "at": "2025-12-22T05:01:50.587Z"
-      }
-    ],
-    "lastUpdatedAt": "2025-12-22T05:01:50.587Z"
-  }
+    "createdAt": "2025-11-15T08:00:00.000Z"
+  },
+  {
+    "id": "proj003",
+    "title": "Underground electricity cabling",
+    "description": "Replacement of overhead electric lines with underground cabling to reduce power failures and improve safety.",
+    "department": "electricity",
+    "area": "Old Hubballi",
+    "status": "Completed",
+    "startDate": "2025-09-01",
+    "endDate": "2025-11-01",
+    "imageUrl": "https://www.electricalindia.in/wp-content/uploads/2018/10/undergroundcables.jpg",
+    "createdBy": "gov002",
+    "createdAt": "2025-08-20T10:15:00.000Z"
+  },
+  {
+    "id": "proj004",
+    "title": "Drainage improvement project",
+    "description": "Improvement of storm water drainage system to prevent flooding in low-lying residential areas.",
+    "department": "water",
+    "area": "Hosur",
+    "status": "Completed",
+    "startDate": "2025-08-10",
+    "endDate": "2025-10-05",
+    "imageUrl": "https://www.yeahlifestyle.com/wp-content/uploads/2022/10/5-Important-Tips-to-Design-Drainage-System-1.jpg",
+    "createdBy": "gov001",
+    "createdAt": "2025-08-01T11:45:00.000Z"
+  },
+  {
+    "id": "proj005",
+    "title": "Smart traffic signal installation",
+    "description": "Installation of adaptive traffic signals to optimize vehicle flow and reduce congestion at major intersections.",
+    "department": "transport",
+    "area": "Vidyanagar",
+    "status": "Ongoing",
+    "startDate": "2025-12-01",
+    "endDate": "2026-02-15",
+    "imageUrl": "https://datenwissen.com/media/images/blog-images/Bengaluru_AI_Traffic_Signal_Timer_Revolutionizing_Urban_Traffic_Management.png",
+    "createdBy": "gov002",
+    "createdAt": "2025-11-25T14:00:00.000Z"
+  },
+  {
+    "id": "proj006",
+    "title": "Storm water drain repair",
+    "description": "Repair and desilting of damaged storm water drains to prevent overflow during heavy rainfall.",
+    "department": "water",
+    "area": "Gokul Road",
+    "status": "Ongoing",
+    "startDate": "2025-10-01",
+    "endDate": "2025-11-15",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYaNQX7AW6ckbl3W-73dPhIh8GtY6jK_grtA&s",
+    "createdBy": "gov001",
+    "createdAt": "2025-09-25T09:00:00.000Z"
+  },
+  {
+  "id": "prj007",
+  "title": "Ring Road Resurfacing & Lane Marking",
+  "department": "roads",
+  "area": "Gokul Road – Airport Stretch",
+  "description": "Resurfacing of the damaged ring road stretch with fresh asphalt, repainting lane markings, installation of reflectors, and minor drainage correction to prevent waterlogging during monsoon. The project aims to reduce accidents and improve traffic flow on the airport-bound route.",
+  "status": "Delayed",
+  "startDate": "2025-09-01",
+  "endDate": "2025-10-15",
+  "actualEndDate": null,
+  "imageUrl": "https://www.universalmincon.com/wp-content/uploads/2024/10/Road-Marking-Machine-for-Thermoplastic-Pavement-Marking-Painting.webp",
+  "createdBy": "auth001",
+  "lastUpdated": "2025-10-28T11:20:00.000Z",
+  "delayReason": "Heavy rainfall and delayed supply of asphalt materials from contractor"
+}
 ]
