@@ -1,93 +1,133 @@
 import express from "express";
 import { readJSON, writeJSON } from "../utils/readWriteJSON.js";
 import { requireAuth } from "../middleware/auth.js";
-import { requireRole } from "../middleware/roleCheck.js";
+import { requireGovOrAuthority } from "../middleware/requireGovOrAuthority.js";
 
 const router = express.Router();
 
-function sortComplaints(list, sort) {
-  if (sort === "top") return [...list].sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0));
-  // default: newest
-  return [...list].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-}
+/* =========================
+   PUBLIC (Citizen dashboard)
+   ========================= */
 
-// PUBLIC FEED
+// GET /complaints?sort=top|new
 router.get("/", (req, res) => {
-  const { sort = "new" } = req.query;
-  const complaints = readJSON("data/complaints.json");
-  res.json(sortComplaints(complaints, sort));
-});
+  const sort = String(req.query.sort || "new").toLowerCase();
 
-// CITIZEN: CREATE COMPLAINT
-router.post("/", requireAuth, requireRole("CITIZEN"), (req, res) => {
-  const { title, description = "", department, area = "", imageUrl = "" } = req.body;
-  if (!title || !department) {
-    return res.status(400).json({ error: "title and department are required" });
+  let data = readJSON("data/complaints.json");
+  if (!Array.isArray(data)) data = [];
+
+  if (sort === "top") {
+    data.sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0));
+  } else {
+    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   }
 
-  const complaints = readJSON("data/complaints.json");
-  const newComplaint = {
-    id: `cmp${String(complaints.length + 1).padStart(3, "0")}`,
-    title,
-    description,
-    department,
-    area,
-    imageUrl,
+  res.json(data);
+});
+
+// POST /complaints (Citizen creates complaint)
+router.post("/", requireAuth, (req, res) => {
+  const { title, department, area, description, imageUrl } = req.body || {};
+
+  if (!title?.trim() || !department?.trim()) {
+    return res.status(400).json({ error: "Title and department are required" });
+  }
+
+  const allowedDepts = ["roads", "electricity", "water", "transport", "sanitation", "other", "animal", "general"];
+  const dept = String(department).toLowerCase();
+
+  if (!allowedDepts.includes(dept)) {
+    return res.status(400).json({ error: "Invalid department" });
+  }
+
+  const data = readJSON("data/complaints.json");
+  const next = {
+    id: `cmp${String(Date.now()).slice(-6)}`, // simple unique id
+    title: String(title).trim(),
+    description: String(description || "").trim(),
+    department: dept,
+    area: String(area || "").trim(),
+    imageUrl: String(imageUrl || "").trim(),
     votes: 0,
     status: "Open",
     createdBy: req.user.id,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
-  complaints.push(newComplaint);
-  writeJSON("data/complaints.json", complaints);
-  res.status(201).json(newComplaint);
+  data.push(next);
+  writeJSON("data/complaints.json", data);
+
+  res.status(201).json(next);
 });
 
-// CITIZEN: VOTE
-router.post("/:id/vote", requireAuth, requireRole("CITIZEN"), (req, res) => {
+// POST /complaints/:id/vote
+router.post("/:id/vote", requireAuth, (req, res) => {
   const { id } = req.params;
-  const complaints = readJSON("data/complaints.json");
-  const idx = complaints.findIndex(c => c.id === id);
-  if (idx === -1) return res.status(404).json({ error: "Complaint not found" });
 
-  // Minimal demo: increment count (no duplicate protection)
-  complaints[idx].votes = (complaints[idx].votes ?? 0) + 1;
+  const data = readJSON("data/complaints.json");
+  const idx = data.findIndex((c) => c.id === id);
+  if (idx === -1) return res.status(404).json({ error: "Not found" });
 
-  writeJSON("data/complaints.json", complaints);
-  res.json({ id, votes: complaints[idx].votes });
+  data[idx].votes = (data[idx].votes ?? 0) + 1;
+  writeJSON("data/complaints.json", data);
+
+  res.json({ id, votes: data[idx].votes });
 });
 
-// GOVT: VIEW COMPLAINTS FOR THEIR DEPT + TOP VOTED
-router.get("/gov/list", requireAuth, requireRole("GOVT"), (req, res) => {
-  const { sort = "new" } = req.query;
-  const complaints = readJSON("data/complaints.json");
-  const dept = req.user.department;
+/* =========================
+   GOVT + AUTHORITY
+   ========================= */
 
-  const filtered = complaints.filter(c => c.department === dept);
-  res.json(sortComplaints(filtered, sort));
-});
+// GET /complaints/gov/list?sort=top|new
+router.get("/gov/list", requireAuth, requireGovOrAuthority, (req, res) => {
+  const sort = String(req.query.sort || "new").toLowerCase();
+  const role = String(req.user?.role || "").toUpperCase();
+  const myDept = String(req.user?.department || req.user?.dept || "").toLowerCase();
 
-// GOVT: UPDATE STATUS (optional but nice)
-router.patch("/gov/:id", requireAuth, requireRole("GOVT"), (req, res) => {
-  const { id } = req.params;
-  const { status } = req.body;
-  const allowed = ["Open", "In Progress", "Resolved"];
+  let data = readJSON("data/complaints.json");
+  if (!Array.isArray(data)) data = [];
 
-  if (!allowed.includes(status)) return res.status(400).json({ error: `status must be one of ${allowed.join(", ")}` });
-
-  const complaints = readJSON("data/complaints.json");
-  const idx = complaints.findIndex(c => c.id === id);
-  if (idx === -1) return res.status(404).json({ error: "Complaint not found" });
-
-  // enforce dept ownership
-  if (complaints[idx].department !== req.user.department) {
-    return res.status(403).json({ error: "Cannot update complaints outside your department" });
+  // GOVT sees only their department; AUTHORITY sees all
+  if (role === "GOVT") {
+    data = data.filter((c) => String(c.department || "").toLowerCase() === myDept);
   }
 
-  complaints[idx].status = status;
-  writeJSON("data/complaints.json", complaints);
-  res.json(complaints[idx]);
+  if (sort === "top") {
+    data.sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0));
+  } else {
+    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+
+  res.json(data);
+});
+
+// PATCH /complaints/gov/:id  { status }
+router.patch("/gov/:id", requireAuth, requireGovOrAuthority, (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body || {};
+
+  const allowed = ["Open", "In Progress", "Resolved"];
+  if (!allowed.includes(status)) {
+    return res.status(400).json({ error: "Invalid status" });
+  }
+
+  const role = String(req.user?.role || "").toUpperCase();
+  const myDept = String(req.user?.department || req.user?.dept || "").toLowerCase();
+
+  const data = readJSON("data/complaints.json");
+  const idx = data.findIndex((c) => c.id === id);
+  if (idx === -1) return res.status(404).json({ error: "Not found" });
+
+  // GOVT can update only their department complaints
+  if (role === "GOVT") {
+    const cDept = String(data[idx].department || "").toLowerCase();
+    if (cDept !== myDept) return res.status(403).json({ error: "Forbidden" });
+  }
+
+  data[idx].status = status;
+  writeJSON("data/complaints.json", data);
+
+  res.json(data[idx]);
 });
 
 export default router;

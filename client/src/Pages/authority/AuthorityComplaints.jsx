@@ -4,7 +4,7 @@ import { complaintsAPI } from "../../services/complaints.api";
 import { useAuth } from "../../context/AuthContext";
 
 const DEPTS = ["all", "roads", "electricity", "water", "transport", "sanitation"];
-const STATUSES = ["All", "Open", "In Progress", "Resolved"];
+const STATUSES = ["All", "Open", "In Progress"];
 const SORTS = [
   { label: "Newest", value: "new" },
   { label: "Top voted", value: "top" },
@@ -22,26 +22,32 @@ export default function AuthorityComplaints() {
   const [q, setQ] = useState("");
 
   const load = async () => {
-    setLoading(true);
-    try {
-      // city-wide list (public list already returns all complaints)
-      const data = await complaintsAPI.listPublic(sort);
-      setComplaints(Array.isArray(data) ? data : []);
-    } catch (e) {
-      console.log("Authority complaints load error:", e?.response?.data || e.message);
-      setComplaints([]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  setLoading(true);
+  try {
+    const data = await complaintsAPI.govList(sort);
+    setComplaints(Array.isArray(data) ? data : []);
+  } catch (e) {
+    console.error("Authority complaints load error", e);
+  } finally {
+    setLoading(false);
+  }
+};
+useEffect(() => {
+  load();
+}, [sort]); 
+const notResolved = (c) => (c.status || "").toLowerCase() !== "resolved";
+const filtered = useMemo(() => {
+  const query = q.trim().toLowerCase();
 
-  useEffect(() => { load(); }, [sort]);
+  return complaints
+    .filter(notResolved) 
+    .filter((c) => {
+      const okDept =
+        dept === "all" ? true : (c.department || "").toLowerCase() === dept;
 
-  const filtered = useMemo(() => {
-    const query = q.trim().toLowerCase();
+     
+      if (status === "Resolved") return false;
 
-    return complaints.filter((c) => {
-      const okDept = dept === "all" ? true : (c.department || "").toLowerCase() === dept;
       const okStatus = status === "All" ? true : c.status === status;
 
       const hay = `${c.title || ""} ${c.description || ""} ${c.area || ""} ${c.department || ""}`.toLowerCase();
@@ -49,23 +55,24 @@ export default function AuthorityComplaints() {
 
       return okDept && okStatus && okQ;
     });
-  }, [complaints, dept, status, q]);
-
+}, [complaints, dept, status, q]);
+  
   const topUrgent = useMemo(() => {
     return [...complaints]
+      .filter(notResolved)
       .sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0))
       .slice(0, 5);
   }, [complaints]);
 
   const updateStatus = async (id, nextStatus) => {
-    // optimistic UI
+   
     setComplaints((prev) => prev.map((c) => (c.id === id ? { ...c, status: nextStatus } : c)));
 
     try {
       await complaintsAPI.govUpdateStatus(id, nextStatus);
     } catch (e) {
       console.log("Status update failed:", e?.response?.data || e.message);
-      // revert on fail by reloading
+      
       load();
     }
   };

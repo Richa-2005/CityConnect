@@ -8,7 +8,14 @@ import alertsRoutes from "./routes/alerts.routes.js";
 import transportRoutes from "./routes/transport.routes.js";
 
 const app = express();
-app.use(cors());
+
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "x-user-id"],
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
