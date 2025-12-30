@@ -11,6 +11,16 @@ export default function AuthorityDashboard() {
   const [complaints, setComplaints] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showHelp, setShowHelp] = useState(false);
+
+  useEffect(() => {
+  const key = "cc_help_seen_authority";
+  const seen = localStorage.getItem(key);
+  if (!seen) {
+    setShowHelp(true);
+    localStorage.setItem(key, "1");
+  }
+}, []);
 
   useEffect(() => {
     const load = async () => {
@@ -64,15 +74,85 @@ export default function AuthorityDashboard() {
     <div className="authority-dash dash">
   
       <div className="dash-top">
-        <div>
-          <div className="dash-city">HUBBALLI CITY</div>
-          <div className="dash-title">Authority Dashboard</div>
-          <div className="dash-subtitle">
-            Welcome, <b>{user?.name}</b> • City-wide overview & governance controls.
+  <div>
+    <div className="dash-city">HUBBALLI CITY</div>
+    <div className="dash-title">Authority Dashboard</div>
+    <div className="dash-subtitle">
+      Welcome, <b>{user?.name}</b> • City-wide overview & governance controls.
+    </div>
+  </div>
+
+  <div className="dash-actions">
+    <button className="help-cta" onClick={() => setShowHelp(true)}>
+      🚀 How to use this demo
+    </button>
+    <span className="pill blue">DEMO • AUTHORITY</span>
+  </div>
+</div>
+{showHelp && (
+  <div className="modal-backdrop" onClick={() => setShowHelp(false)}>
+    <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-head">
+        <h3>👋 CityConnect — Authority Quick Guide</h3>
+        <button className="modal-close" onClick={() => setShowHelp(false)}>
+          ✕
+        </button>
+      </div>
+
+      <p className="modal-sub">
+        This demo takes less than <b>1 minute</b>. Here’s what to explore:
+      </p>
+
+      <div className="guide-big">
+        <div className="guide-item-big">
+          <div className="guide-step-big">1</div>
+          <div>
+            <div className="guide-title-big">Monitor city-wide complaints</div>
+            <div className="guide-text-big">
+              View <b>Top Urgent</b> issues by votes and status.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">2</div>
+          <div>
+            <div className="guide-title-big">Track projects by department</div>
+            <div className="guide-text-big">
+              Check department snapshot for <b>ongoing work</b> and gaps.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">3</div>
+          <div>
+            <div className="guide-title-big">Issue alerts (Authority-only)</div>
+            <div className="guide-text-big">
+              Use the <b>Alerts</b> tab to publish verified, city-wide updates.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">4</div>
+          <div>
+            <div className="guide-title-big">Govern with prioritization</div>
+            <div className="guide-text-big">
+              Votes + status help identify what needs action first.
+            </div>
           </div>
         </div>
       </div>
 
+      <div className="modal-foot">
+        <button className="btn-sm primary" onClick={() => setShowHelp(false)}>
+          Got it — continue
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       <div className="grid12">
         <div className="span3 kpi-stack">
   <div className="card">

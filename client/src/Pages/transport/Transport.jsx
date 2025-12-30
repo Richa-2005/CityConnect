@@ -13,6 +13,17 @@ export default function Transport() {
   const [result, setResult] = useState(null);
   const [err, setErr] = useState("");
 
+  const [showHelp, setShowHelp] = useState(false);
+
+  useEffect(() => {
+  const key = "cc_help_seen_transport";
+  const seen = localStorage.getItem(key);
+  if (!seen) {
+    setShowHelp(true);
+    localStorage.setItem(key, "1");
+  }
+}, []);
+
   useEffect(() => {
     const load = async () => {
       setLoadingStops(true);
@@ -31,6 +42,18 @@ export default function Transport() {
   }, []);
 
   const canFind = useMemo(() => from && to && from !== to, [from, to]);
+  const samples = useMemo(() => {
+  if (!stops?.length) return [];
+  
+  const s0 = stops[0];
+  const s3 = stops[3] || stops[1];
+  const s5 = stops[5] || stops[2];
+  return [
+    { label: "College → Railway Station", from: s0?.id, to: s3?.id },
+    { label: "BRTS Stop → Central Market", from: s3?.id, to: s5?.id },
+    { label: "Bus Stand → Airport (last-mile)", from: s5?.id, to: s0?.id },
+  ].filter(x => x.from && x.to && x.from !== x.to);
+}, [stops]);
 
   const onFind = async () => {
     if (!canFind) return;
@@ -49,17 +72,108 @@ export default function Transport() {
 
   return (
     <div className="dash">
-      <div className="dash-top">
-        <div>
-          <div className="dash-city">HUBBALLI CITY</div>
-          <div className="dash-title">Public Transport Planner</div>
-          <div className="dash-subtitle">
-            Find the cheapest route with exact bus/train instructions and transfers.
+     <div className="dash-top">
+  <div>
+    <div className="dash-city">HUBBALLI CITY</div>
+    <div className="dash-title">Public Transport Planner</div>
+    <div className="dash-subtitle">
+      Cost-effective routes with connected steps + aligned timings.
+    </div>
+  </div>
+
+  <div className="dash-actions">
+    <button className="help-cta" onClick={() => setShowHelp(true)}>
+      🚀 How to use this demo
+    </button>
+    <span className="badge blue">DEMO • TRANSPORT</span>
+  </div>
+</div>
+{showHelp && (
+  <div className="modal-backdrop" onClick={() => setShowHelp(false)}>
+    <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-head">
+        <h3>🚌 CityConnect — Transport Quick Guide</h3>
+        <button className="modal-close" onClick={() => setShowHelp(false)}>
+          ✕
+        </button>
+      </div>
+
+      <p className="modal-sub">
+        Enter pickup & drop → get <b>connected public transport legs</b> with timing and cost.
+      </p>
+
+      <div className="guide-big">
+        <div className="guide-item-big">
+          <div className="guide-step-big">1</div>
+          <div>
+            <div className="guide-title-big">Pick From and To</div>
+            <div className="guide-text-big">
+              Choose locations (stops + areas) from the dropdowns.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">2</div>
+          <div>
+            <div className="guide-title-big">Generate connected route</div>
+            <div className="guide-text-big">
+              Click <b>Find Route</b> → see multi-leg path (Bus → Metro → etc.).
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">3</div>
+          <div>
+            <div className="guide-title-big">Timing alignment</div>
+            <div className="guide-text-big">
+              Each leg shows <b>travel time</b> + <b>frequency</b> for realistic transfers.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">4</div>
+          <div>
+            <div className="guide-title-big">Cost-effective choice</div>
+            <div className="guide-text-big">
+              Summary shows total cost + transfers so users avoid unnecessary cabs.
+            </div>
           </div>
         </div>
       </div>
 
+      <div className="modal-foot">
+        <button className="btn-sm primary" onClick={() => setShowHelp(false)}>
+          Got it — continue
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
       <div className="card transport-card">
+        {samples.length > 0 && (
+  <div className="sample-row">
+    <span className="muted">Try a sample:</span>
+    {samples.map((s) => (
+      <button
+        key={s.label}
+        type="button"
+        className="sample-chip"
+        onClick={async () => {
+          setFrom(s.from);
+          setTo(s.to);
+          // run after state updates settle
+          setTimeout(() => onFind(), 0);
+        }}
+      >
+        {s.label}
+      </button>
+    ))}
+  </div>
+)}
         <div className="transport-form">
           <div className="field">
             <label>From</label>

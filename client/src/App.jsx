@@ -21,6 +21,9 @@ import AuthorityAlerts from "./pages/authority/AuthorityAlerts";
 import AuthorityProjects from "./pages/authority/AuthorityProjects";
 import AuthorityComplaints from "./pages/authority/AuthorityComplaints";
 
+import HelpModal from "./components/HelpModal";
+
+
 export default function App() {
   const { isAuthed } = useAuth();
 
@@ -31,6 +34,7 @@ export default function App() {
       {isAuthed && <AlertTicker />}
       {isAuthed && <AlertPopup />}
       {isAuthed && <AlertFooter />}
+      {isAuthed && <HelpModal />}
       <Routes>
     
         <Route
@@ -78,15 +82,7 @@ export default function App() {
 
         <Route path="/transport" element={<Transport />} />
        
-        <Route
-          path="/citizen/complaints"
-          element={
-            <ProtectedRoute roles={["citizen"]}>
-              <div>Citizen Complaints</div>
-            </ProtectedRoute>
-          }
-        />
-
+        
         <Route
           path="/govt/complaints"
           element={

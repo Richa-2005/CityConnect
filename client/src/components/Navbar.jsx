@@ -63,11 +63,17 @@ export default function Navbar() {
               <div className="user-info">
                 <div className="user-name">{user?.name || "User"}</div>
                 <div className="user-meta">
-                  {user?.role}
-                  {user?.dept ? ` · ${user.dept}` : ""}
-                </div>
+  {user?.role?.toUpperCase()}
+  {user?.department ? ` · ${user.department}` : ""}
+  <span className="demo-pill">DEMO</span>
+</div>
               </div>
-
+<button
+  className="btn btn-demohelp"
+  onClick={() => window.dispatchEvent(new CustomEvent("cc:open-help"))}
+>
+  ❓ Help
+</button>
               <button className="btn btn-outline" onClick={handleLogout}>
                 Logout
               </button>

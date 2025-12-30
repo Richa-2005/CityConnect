@@ -29,8 +29,8 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 3rem;
   padding: 2rem;
+  align-items: center;
 }
-
 .auth-card {
   width: 100%;
   max-width: 420px;
@@ -114,6 +114,8 @@
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.5);
   max-width: 520px;
+  max-height: max-content;
+  align-self: center;
 }
 
 .auth-brand {
@@ -132,6 +134,10 @@
 .auth-points li {
   font-size: 1.2rem;
   margin-bottom: 0.7rem;
+  background-color:var(--border);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: 0.2rem 0.5rem;
 }
 
 .auth-points {
@@ -149,3 +155,51 @@
     display: none;
   }
 }
+
+.demo-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.demo-btn {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.demo-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.demo-btn-danger {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.demo-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.demo-divider::before,
+.demo-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+}
+
+
+

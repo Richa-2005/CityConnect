@@ -53,7 +53,7 @@
     "description": "Water flowing continuously since last night.",
     "department": "water",
     "area": "Old Hubballi",
-    "votes": 39,
+    "votes": 47,
     "status": "In Progress",
     "createdBy": "citizen004",
     "imageUrl": "https://piperepair.co.uk/wp-content/uploads/2020/02/2020-02-25-Public-Water-Leak-678x381.jpg",
@@ -113,7 +113,7 @@
     "description": "Open sewage causing unbearable smell.",
     "department": "water",
     "area": "Dajibanpeth",
-    "votes": 40,
+    "votes": 48,
     "status": "In Progress",
     "createdBy": "citizen009",
     "imageUrl": "https://th-i.thgim.com/public/migration_catalog/article14446163.ece/alternates/LANDSCAPE_1200/11julypyspd02-s12THSEWAGEMARKET-PU.jpg",
@@ -130,5 +130,78 @@
     "createdBy": "citizen002",
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdX53hiGrL-7jqfjwhTdC9CSgo6PcghTx8Ng&s",
     "createdAt": "2025-12-17T07:30:00.000Z"
+  },
+
+  {
+    "id": "cmp012",
+    "title": "Bus timing mismatch at CBT",
+    "description": "Displayed bus timing differs from actual arrival by 20–30 mins. Commuters missing connections.",
+    "department": "transport",
+    "area": "CBT",
+    "imageUrl": "https://udaipurtimes.com/static/c1e/client/74416/migrated/4164051f08a88b49d112b30286f75760.jpg",
+    "votes": 29,
+    "status": "Open",
+    "createdBy": "citizen010",
+    "createdAt": "2025-12-23T06:30:00.000Z"
+  },
+  {
+    "id": "cmp013",
+    "title": "Bus stop board missing route info",
+    "description": "No route numbers or destination list at the stop. New commuters keep taking wrong buses.",
+    "department": "transport",
+    "area": "Vidyanagar",
+    "imageUrl": "https://static.toiimg.com/thumb/101115831.cms?resizemode=4&width=400",
+    "votes": 18,
+    "status": "Open",
+    "createdBy": "citizen011",
+    "createdAt": "2025-12-22T16:10:00.000Z"
+  },
+  {
+    "id": "cmp014",
+    "title": "Traffic signal stuck on green at junction",
+    "description": "Signal stuck on green for one side leading to risky crossing and near-collisions.",
+    "department": "transport",
+    "area": "Unkal",
+    "imageUrl": "https://i.ytimg.com/vi/MSLFG48p960/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDZIqdCl_UZrvHkTJ5q3kANF7dQKA",
+    "votes": 41,
+    "status": "In Progress",
+    "createdBy": "citizen012",
+    "createdAt": "2025-12-21T19:05:00.000Z"
+  },
+  {
+    "id": "cmp015",
+    "title": "Auto-rickshaw overcharging near Railway Station",
+    "description": "Regular complaints of overcharging tourists/students. Need enforcement and visible fare charts.",
+    "department": "transport",
+    "area": "Railway Station",
+    "imageUrl": "https://static01.nyt.com/images/2019/07/04/business/00rickshaw12/merlin_157270914_5feea196-1c0a-4fd4-bf2f-b6bb7bb3ad5c-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+    "votes": 23,
+    "status": "Open",
+    "createdBy": "citizen013",
+    "createdAt": "2025-12-20T12:25:00.000Z"
+  },
+  {
+    "id": "cmp016",
+    "title": "Bus shelter lights not working",
+    "description": "Shelter lights off after 7 PM; unsafe for women and students waiting late evening.",
+    "department": "transport",
+    "area": "Navanagar",
+    "imageUrl": "https://images.unsplash.com/photo-1634759614921-191d343cb4f5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "votes": 33,
+    "status": "In Progress",
+    "createdBy": "citizen014",
+    "createdAt": "2025-12-19T18:40:00.000Z"
+  },
+  {
+    "id": "cmp017",
+    "title": "No pedestrian crossing time near school zone",
+    "description": "Signal changes too fast near school; kids and elderly can’t cross safely during peak hours.",
+    "department": "transport",
+    "area": "Keshwapur",
+    "imageUrl": "https://sc0.blr1.cdn.digitaloceanspaces.com/article/170441-vbtlsaywfs-1645457412.jpg",
+    "votes": 27,
+    "status": "Open",
+    "createdBy": "citizen015",
+    "createdAt": "2025-12-18T07:50:00.000Z"
   }
 ]

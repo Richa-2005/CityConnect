@@ -87,3 +87,24 @@
   .action .btn-sm { width: 100%; }
   .swap-wrap { justify-content: flex-start; padding: 0; }
 }
+
+.sample-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  align-items:center;
+  margin-bottom:0.75rem;
+}
+
+.sample-chip{
+  padding:0.35rem 0.7rem;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(37,99,235,0.08);
+  font-weight:800;
+  cursor:pointer;
+}
+
+.sample-chip:hover{
+  filter:brightness(0.98);
+}

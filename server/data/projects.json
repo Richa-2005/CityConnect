@@ -23,7 +23,16 @@
     "endDate": "2025-12-30",
     "imageUrl": "https://media.istockphoto.com/id/1330075519/photo/resurfacing-residential-road-with-asphalt-paving-machine.jpg?s=612x612&w=0&k=20&c=eHMePNKI3DmKpcLX7CgktJz8NB9pl2_0y1EAzgBXcF0=",
     "createdBy": "gov001",
-    "createdAt": "2025-11-15T08:00:00.000Z"
+    "createdAt": "2025-11-15T08:00:00.000Z",
+    "updates": [
+      {
+        "note": "Pre-checking of road condition done.",
+        "imageUrl": "",
+        "by": "gov001",
+        "at": "2025-12-30T06:54:23.731Z"
+      }
+    ],
+    "lastUpdatedAt": "2025-12-30T06:54:23.731Z"
   },
   {
     "id": "proj003",
@@ -78,18 +87,18 @@
     "createdAt": "2025-09-25T09:00:00.000Z"
   },
   {
-  "id": "prj007",
-  "title": "Ring Road Resurfacing & Lane Marking",
-  "department": "roads",
-  "area": "Gokul Road – Airport Stretch",
-  "description": "Resurfacing of the damaged ring road stretch with fresh asphalt, repainting lane markings, installation of reflectors, and minor drainage correction to prevent waterlogging during monsoon. The project aims to reduce accidents and improve traffic flow on the airport-bound route.",
-  "status": "Delayed",
-  "startDate": "2025-09-01",
-  "endDate": "2025-10-15",
-  "actualEndDate": null,
-  "imageUrl": "https://www.universalmincon.com/wp-content/uploads/2024/10/Road-Marking-Machine-for-Thermoplastic-Pavement-Marking-Painting.webp",
-  "createdBy": "auth001",
-  "lastUpdated": "2025-10-28T11:20:00.000Z",
-  "delayReason": "Heavy rainfall and delayed supply of asphalt materials from contractor"
-}
+    "id": "prj007",
+    "title": "Ring Road Resurfacing & Lane Marking",
+    "department": "roads",
+    "area": "Gokul Road – Airport Stretch",
+    "description": "Resurfacing of the damaged ring road stretch with fresh asphalt, repainting lane markings, installation of reflectors, and minor drainage correction to prevent waterlogging during monsoon. The project aims to reduce accidents and improve traffic flow on the airport-bound route.",
+    "status": "Delayed",
+    "startDate": "2025-09-01",
+    "endDate": "2025-10-15",
+    "actualEndDate": null,
+    "imageUrl": "https://www.universalmincon.com/wp-content/uploads/2024/10/Road-Marking-Machine-for-Thermoplastic-Pavement-Marking-Painting.webp",
+    "createdBy": "auth001",
+    "lastUpdated": "2025-10-28T11:20:00.000Z",
+    "delayReason": "Heavy rainfall and delayed supply of asphalt materials from contractor"
+  }
 ]

@@ -11,10 +11,25 @@ export default function GovtDashboard() {
   const [complaints, setComplaints] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showHelp, setShowHelp] = useState(false);
+
   const totalP = projects.length;
-const plannedP = projects.filter(p => p.status === "Planned").length;
-const ongoingP = projects.filter(p => p.status === "Ongoing").length;
-const completedP = projects.filter(p => p.status === "Completed").length;
+  const plannedP = projects.filter(p => p.status === "Planned").length;
+  const ongoingP = projects.filter(p => p.status === "Ongoing").length;
+  const completedP = projects.filter(p => p.status === "Completed").length;
+
+  useEffect(() => {
+    if (!dept) return;
+    const key = `cc_help_seen_gov_${dept}`;
+    const seen = localStorage.getItem(key);
+    if (!seen) {
+      setShowHelp(true);
+      localStorage.setItem(key, "1");
+    }
+  }, [dept]);
+  
+
+
   const load = async () => {
     setLoading(true);
     try {
@@ -28,9 +43,10 @@ const completedP = projects.filter(p => p.status === "Completed").length;
       setLoading(false);
     }
   };
-  const fmt = (d) =>
-  new Date(d).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
-
+  const fmt = (d) => {
+  if (!d) return "—";
+  return new Date(d).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+};
   useEffect(() => { if (dept) load(); }, [dept]);
 
   const stats = useMemo(() => ({
@@ -56,45 +72,77 @@ const completedP = projects.filter(p => p.status === "Completed").length;
       Logged in as <b>{user?.name}</b> • Dept: <b>{user?.department}</b> • Zone: <b>{user?.zone}</b>
     </div>
   </div>
-  <span className="badge blue">{user?.id}</span>
+  <div className="dash-actions">
+  <button className="help-cta" onClick={() => setShowHelp(true)}>
+    🚀 How to use this demo
+  </button>
+  <span className="badge blue">DEMO • {user?.id}</span>
 </div>
-<div className="card span-12" style={{ marginBottom: "1rem" }}>
-  <h3>Officer Guide</h3>
-
-  <div className="guide">
-    <div className="guide-item">
-      <div className="guide-step">1</div>
-      <div>
-        <div className="guide-title">Review priority complaints</div>
-        <div className="guide-text">Go to <b>Complaints</b> tab → sort by <b>Top voted</b> to see urgent issues first.</div>
+</div>
+{showHelp && (
+  <div className="modal-backdrop" onClick={() => setShowHelp(false)}>
+    <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-head">
+        <h3>👋 CityConnect — Officer Quick Guide</h3>
+        <button className="modal-close" onClick={() => setShowHelp(false)}>
+          ✕
+        </button>
       </div>
-    </div>
 
-    <div className="guide-item">
-      <div className="guide-step">2</div>
-      <div>
-        <div className="guide-title">Update status</div>
-        <div className="guide-text">Move complaints from <b>Open → In Progress → Resolved</b> to keep citizens updated.</div>
+      <p className="modal-sub">
+        You are logged in for <b>{dept?.toUpperCase()}</b>. Here’s the fastest way to explore:
+      </p>
+
+      <div className="guide-big">
+        <div className="guide-item-big">
+          <div className="guide-step-big">1</div>
+          <div>
+            <div className="guide-title-big">Review priority complaints</div>
+            <div className="guide-text-big">
+              Open <b>Complaints</b> → sort by <b>Top voted</b> to catch urgent issues first.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">2</div>
+          <div>
+            <div className="guide-title-big">Update status quickly</div>
+            <div className="guide-text-big">
+              Move issues from <b>Open → In Progress → Resolved</b> to keep citizens informed.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">3</div>
+          <div>
+            <div className="guide-title-big">Publish project updates</div>
+            <div className="guide-text-big">
+              Add department projects with dates, location and proof for transparency.
+            </div>
+          </div>
+        </div>
+
+        <div className="guide-item-big">
+          <div className="guide-step-big">4</div>
+          <div>
+            <div className="guide-title-big">Use analytics</div>
+            <div className="guide-text-big">
+              Spot workload trends and plan resources for your zone.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div className="guide-item">
-      <div className="guide-step">3</div>
-      <div>
-        <div className="guide-title">Publish project updates</div>
-        <div className="guide-text">Use <b>Projects</b> tab to create or update department works with dates and evidence photos.</div>
-      </div>
-    </div>
-
-    <div className="guide-item">
-      <div className="guide-step">4</div>
-      <div>
-        <div className="guide-title">Use analytics</div>
-        <div className="guide-text">Check <b>Analytics</b> for complaint trends and workload insights (helps planning).</div>
+      <div className="modal-foot">
+        <button className="btn-sm primary" onClick={() => setShowHelp(false)}>
+          Got it — continue
+        </button>
       </div>
     </div>
   </div>
-</div>
+)}
 
       <div className="grid">
         <div className="card span-6">
@@ -111,7 +159,7 @@ const completedP = projects.filter(p => p.status === "Completed").length;
         </div>
         <div className="card span-6">
           <h3>Dept Projects</h3>
-          <div className="stat-big">{totalP}</div>
+          <div className="stat-big">{loading ? "—" : totalP}</div>
           <div className="pill-row">
             <span className="pill neutral">Planned: {plannedP}</span>
             <span className="pill blue">Ongoing: {ongoingP}</span>
