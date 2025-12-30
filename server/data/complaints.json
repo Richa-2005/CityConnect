@@ -53,7 +53,7 @@
     "description": "Water flowing continuously since last night.",
     "department": "water",
     "area": "Old Hubballi",
-    "votes": 47,
+    "votes": 48,
     "status": "In Progress",
     "createdBy": "citizen004",
     "imageUrl": "https://piperepair.co.uk/wp-content/uploads/2020/02/2020-02-25-Public-Water-Leak-678x381.jpg",
@@ -131,7 +131,6 @@
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdX53hiGrL-7jqfjwhTdC9CSgo6PcghTx8Ng&s",
     "createdAt": "2025-12-17T07:30:00.000Z"
   },
-
   {
     "id": "cmp012",
     "title": "Bus timing mismatch at CBT",
